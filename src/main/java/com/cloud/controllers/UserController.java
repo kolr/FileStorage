@@ -25,7 +25,7 @@ public class UserController {
     @Inject
     UserService userService;
 
-    @RequestMapping(value = "/auth")
+    @RequestMapping(value = "/auth", method = RequestMethod.POST)
     public String auth(HttpServletRequest request, Model model) {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");

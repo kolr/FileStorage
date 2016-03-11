@@ -1,0 +1,30 @@
+/* Sign in form in index page */
+div.index-sign-in-to-cloud {
+    width: 300px;
+    height: 200px;
+    background-color: beige;
+}
+
+input.index-sign-in-input {
+    font-family: SFNSText, 'Helvetica Neue', sans-serif;
+    width: 258px;
+    height: 40px;
+    font-size: 19px;
+    border: none;
+    background-color: #eaeaea;
+}
+
+input.index-sign-in-input-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+input.index-sign-in-input-bottom {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+div.index-sign-in-input-container {
+    width: 258px;
+    margin: 0 auto;
+}
