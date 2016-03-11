@@ -25,6 +25,21 @@ public class UserController {
     @Inject
     UserService userService;
 
+    @RequestMapping(value = "/auth")
+    public String auth(HttpServletRequest request, Model model) {
+        String login = request.getParameter("login");
+        String pass = request.getParameter("pass");
+        User user = userService.getUser(login);
+        if(user != null) {
+            if(user.getPass().equals(pass)) {
+                model.addAttribute("currentUser", user);
+            } else {
+                model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
+            }
+        }
+        return "acc";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(HttpServletRequest request, Model model) {
         User newUser = generateUser(request);
@@ -36,10 +51,12 @@ public class UserController {
     @RequestMapping(value = "/{user}/all")
     public String getAllUsers(Model model, @PathVariable String user){
         User admin = userService.getUser(user);
-        if(admin.getRole().equals("Admin")) {
-            model.addAttribute("lst", userService.getALl());
-        } else {
-            model.addAttribute("errorMessage", "You have no rights to get list of Users");
+        if(admin != null) {
+            if (admin.getRole().equals("Admin")) {
+                model.addAttribute("lst", userService.getALl());
+            } else {
+                model.addAttribute("errorMessage", "You have no rights to get list of Users");
+            }
         }
         return "users";
     }
