@@ -23,4 +23,8 @@
         </property>
     </bean>
 
+    <bean id="userService" class="com.cloud.services.UserService" />
+
+    <bean id="storage" class="com.cloud.storage.Storage" />
+
 </beans>
