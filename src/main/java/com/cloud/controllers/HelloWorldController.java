@@ -18,6 +18,7 @@ public class HelloWorldController {
     static {
         LOGGER.info("HelloWorldController initialized.");
         LOGGER.info("Nikita joined");
+        LOGGER.info("Welcome, Nikita");
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
