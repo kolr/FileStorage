@@ -20,6 +20,7 @@ public class HelloWorldController {
         LOGGER.info("Nikita joined");
         LOGGER.info("Welcome, Nikita");
         LOGGER.info("I`m glad to be here");
+        LOGGER.info("What's up?");
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
