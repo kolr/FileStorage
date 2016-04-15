@@ -22,6 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     private static final Logger LOGGER = Logger.getLogger(UserController.class);
 
+    static {
+        LOGGER.info("Change");
+    }
+
     @Inject
     UserService userService;
 
