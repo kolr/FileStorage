@@ -15,14 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HelloWorldController {
     private static final Logger LOGGER = Logger.getLogger(HelloWorldController.class);
 
-    static {
-        LOGGER.info("HelloWorldController initialized.");
-        LOGGER.info("Nikita joined");
-        LOGGER.info("Welcome, Nikita");
-        LOGGER.info("I`m glad to be here");
-        LOGGER.info("What's up?");
-    }
-
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(Model model) {
         model.addAttribute("greeting", "Hello Cloud");
