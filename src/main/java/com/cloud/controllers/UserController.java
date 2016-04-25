@@ -34,8 +34,8 @@ public class UserController {
         String login = request.getParameter("login");
         String pass = request.getParameter("pass");
         User user = userService.getUser(login);
-        if(user != null) {
-            if(user.getPass().equals(pass)) {
+        if (user != null) {
+            if (user.getPass().equals(pass)) {
                 model.addAttribute("currentUser", user);
             } else {
                 model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
@@ -53,9 +53,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{user}/all")
-    public String getAllUsers(Model model, @PathVariable String user){
+    public String getAllUsers(Model model, @PathVariable String user) {
         User admin = userService.getUser(user);
-        if(admin != null) {
+        if (admin != null) {
             if (admin.getRole().equals("Admin")) {
                 model.addAttribute("lst", userService.getALl());
             } else {

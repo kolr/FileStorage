@@ -90,7 +90,7 @@ body{
 .main-signin {
     width: 455px;
     height: 360px;
-    margin: 60px auto;
+    margin: 40px auto;
 }
 .main-signin .main-signin_head {
     border-radius: 10px 10px 0 0;
@@ -151,7 +151,6 @@ body{
     float: left;
     color: #B5CACC;
     background-color: transparent;
-    background-image: none;
     border: none;
     font-size: x-large;
     font-family: serif;
@@ -170,9 +169,107 @@ body{
 .main-signin .main-signin_middle .middle_form :-moz-placeholder {
     color: #575E5F;
 }
-.main-signin .main-signin_middle .middle_form ::-moz-placeholder {
-    color: #575E5F;
-}
 .main-signin .main-signin_middle .middle_form :-ms-input-placeholder {
     color: #575E5F;
+}
+
+/*секция для модального окна*/
+a {color: #333; text-decoration: none; font-size: 25px;}
+a:hover {color:#ccc; text-decoration:none}
+#mask {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:9000;
+    display:none;
+    font-family: Georgia;
+}
+#main-signup .window {
+    position:absolute;
+    left:0;
+    top:0;
+    width:300px;
+    height:400px;
+    display:none;
+    z-index:9999;
+    font-size: 25px;
+    background-color:#ffffff;
+    border-radius: 10px;
+}
+#main-signup .window .header{
+    text-align: center;
+    background: #ADB1B6;
+    border-bottom: 1px solid #3914AF;
+    box-shadow: 0px 1px 0px #000;
+    border-radius: 10px 10px 0 0;
+    padding: 20px 5px 20px 5px;
+    color: #24429D;
+}
+#main-signup .window .middle_form{
+    padding: 20px 15px;
+    background: #fff;
+}
+#main-signup .window .middle_form ::-webkit-input-placeholder {
+    color: #575E5F;
+}
+#main-signup .window .middle_form :-moz-placeholder {
+    color: #575E5F;
+}
+#main-signup .window .middle_form :-ms-input-placeholder {
+    color: #575E5F;
+}
+#main-signup .window .middle_form input[type="text"], #main-signup .window .middle_form input[type="password"], #main-signup .window .middle_form input[type="submit"]{
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #B2BEBF;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 5px;
+    width: 100%;
+    outline: none;
+}
+#main-signup .window .middle_form input[type="text"]:focus{
+    box-shadow: 0px 0px 8px 5px #7085B5;
+}
+#main-signup .window .middle_form input[type="password"]:focus{
+    box-shadow: 0px 0px 8px 5px #7085B5;
+}
+#main-signup .window .footer{
+    border-radius: 0 0 10px 10px;
+    background: #BDC0C3;
+    color: #798FC7;
+    border-top: 1px solid #3914AF;
+    width: 100%;
+    float:right;
+    text-align: right;
+    display: block;
+    padding: 20px 0 10px 0;
+}
+#main-signup .window .footer input[type="submit"], #main-signup .window .footer input[type="button"]{
+    color: #24429D;
+    background-color: transparent;
+    border: none;
+    font-size: x-large;
+    font-family: serif;
+    cursor:pointer;
+    outline: none;
+    margin-right: 5px;
+}
+#main-signup .window .footer input[type="submit"]:hover{
+    color: #fff;
+}
+#main-signup .window .footer input[type="submit"]:active{
+    color: #fff;
+}
+#main-signup .window .footer input[type="button"]:hover{
+    color: #fff;
+}
+#main-signup .window .footer input[type="button"]:active{
+    color: #fff;
+}
+#main-signup #dialog {
+    width:500px;
+    height:400px;
+    background: transparent;
 }
