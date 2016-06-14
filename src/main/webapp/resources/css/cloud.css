@@ -173,6 +173,15 @@ body{
     color: #575E5F;
 }
 
+#footer{
+    position: fixed;
+    bottom: 0;
+    padding-left: 10px;
+    color: #fff;
+    font-family: Georgia;
+    font-weight: 100;
+}
+
 /*секция для модального окна*/
 a {color: #333; text-decoration: none; font-size: 25px;}
 a:hover {color:#ccc; text-decoration:none}

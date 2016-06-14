@@ -5,11 +5,11 @@ package com.cloud.entities;
  * Created by Rodion on 11.03.2016.
  */
 public class User {
-    String login;
+    int id;
     String name;
     String lastName;
+    String login;
     String pass;
-    String role;
 
     public User() {
     }
@@ -46,11 +46,11 @@ public class User {
         this.pass = pass;
     }
 
-    public String getRole() {
-        return role;
+    public int getId() {
+        return id;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setId(String role) {
+        this.id = id;
     }
 }
