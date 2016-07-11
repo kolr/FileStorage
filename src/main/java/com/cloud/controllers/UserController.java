@@ -63,7 +63,7 @@ public class UserController {
 
     private User generateUser(HttpServletRequest request) {
         User user = new User();
-        user.setLogin(request.getParameter("login"));
+        user.setEmail(request.getParameter("login"));
         user.setName(request.getParameter("name"));
         user.setLastName(request.getParameter("lastName"));
         user.setPass(request.getParameter("pass"));

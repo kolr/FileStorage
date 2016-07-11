@@ -1,5 +1,7 @@
 package com.cloud.entities;
 
+import com.cloud.validation.annotation.Email;
+
 /**
  * ${APP}
  * Created by Rodion on 11.03.2016.
@@ -8,18 +10,20 @@ public class User {
     int id;
     String name;
     String lastName;
-    String login;
+
+    @Email
+    String email;
     String pass;
 
     public User() {
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
