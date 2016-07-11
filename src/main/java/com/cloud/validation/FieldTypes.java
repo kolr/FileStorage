@@ -5,5 +5,21 @@ package com.cloud.validation;
  * Created by Rodion.
  */
 public enum FieldTypes {
-    EMAIL, NAME, PASSWORD
+    EMAIL{
+        public String getRegExp() {
+            return "[A-Z0-9._%-]+@[A-Z0-9._%-]+\\.[A-Z]{2,4}";
+        }
+    }, NAME{
+        public String getRegExp() {
+            return "[a-zA-Zа-яА-Я]{3,30}";
+        }
+    }, PASSWORD{
+        public String getRegExp() {
+            return "[^!\"№;%:?*()_]{8,30}";
+        }
+    };
+
+    abstract public String getRegExp();
+
+
 }
