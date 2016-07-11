@@ -56,11 +56,7 @@ public class UserController {
     public String getAllUsers(Model model, @PathVariable String user) {
         User admin = userService.getUser(user);
         if (admin != null) {
-            if (admin.getRole().equals("Admin")) {
-                model.addAttribute("lst", userService.getALl());
-            } else {
-                model.addAttribute("errorMessage", "You have no rights to get list of Users");
-            }
+
         }
         return "users";
     }
@@ -71,7 +67,6 @@ public class UserController {
         user.setName(request.getParameter("name"));
         user.setLastName(request.getParameter("lastName"));
         user.setPass(request.getParameter("pass"));
-        user.setRole(request.getParameter("role"));
         return user;
     }
 
