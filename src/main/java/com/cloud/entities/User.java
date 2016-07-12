@@ -1,7 +1,5 @@
 package com.cloud.entities;
 
-import com.cloud.validation.annotation.Email;
-
 /**
  * ${APP}
  * Created by Rodion on 11.03.2016.
@@ -10,8 +8,6 @@ public class User {
     private int id;
     private String name;
     private String lastName;
-
-    @Email
     private String email;
     private String pass;
 
