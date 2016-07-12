@@ -7,7 +7,7 @@ package com.cloud.validation;
 public enum FieldTypes {
     EMAIL{
         public String getRegExp() {
-            return "[A-Z0-9._%-]+@[A-Z0-9._%-]+\\.[A-Z]{2,4}";
+            return "[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[A-Za-z]{2,4}";
         }
     }, NAME{
         public String getRegExp() {
