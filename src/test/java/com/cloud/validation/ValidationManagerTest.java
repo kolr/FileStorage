@@ -18,6 +18,7 @@ public class ValidationManagerTest {
     private static final String VERIFY_TRACKER_PASSWORD = "password2";
     private static final String VERIFY_TRACKER_PASSWORD_INCORRECT = "pas";
     private static final String VERIFY_TRACKER_NAME = "John";
+    private static final String VERIFY_TRACKER_NAME_INCORRECT = "John2";
     private static final String VERIFY_TRACKER_LASTNAME = "Doe";
 
     private static ValidationManager validationManager;
@@ -76,4 +77,23 @@ public class ValidationManagerTest {
 
         assertFalse(actual);
     }
+
+    @Test
+    public void validateRegistrationIncorrectNameTest() {
+        RegistrationBean test = new RegistrationBean(VERIFY_TRACKER_EMAIL, VERIFY_TRACKER_NAME_INCORRECT,
+                VERIFY_TRACKER_LASTNAME, VERIFY_TRACKER_PASSWORD);
+        boolean actual = validationManager.validate(test, RegistrationBean.class);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void validateRegistrationIncorrectEmailTest() {
+        RegistrationBean test = new RegistrationBean(VERIFY_TRACKER_EMAIL_INCORRECT, VERIFY_TRACKER_NAME,
+                VERIFY_TRACKER_LASTNAME, VERIFY_TRACKER_PASSWORD);
+        boolean actual = validationManager.validate(test, RegistrationBean.class);
+
+        assertFalse(actual);
+    }
+
 }
