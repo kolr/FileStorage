@@ -4,35 +4,30 @@ package com.cloud.validation;
  * 11.07.2016
  * Created by Rodion.
  */
-public class Field {
+public class VerifiableField {
     private static final FieldTypes DEFAULT_TYPE = FieldTypes.NAME;
     private static final String DEFAULT_REGEXP = "";
     private static final boolean DEFAULT_REQUIRED = true;
     private static final boolean DEFAULT_VALID = false;
 
     private FieldTypes type;
+    private String value;
     private String regexp;
     private boolean required;
     private boolean valid;
 
-    public Field() {
+    public VerifiableField() {
         this.type = DEFAULT_TYPE;
         this.regexp = DEFAULT_REGEXP;
         this.required = DEFAULT_REQUIRED;
         this.valid = DEFAULT_VALID;
     }
 
-    public Field(FieldTypes type) {
+    public VerifiableField(FieldTypes type, String value) {
         this.type = type;
+        this.value = value;
         this.regexp = type.getRegExp();
         this.required = DEFAULT_REQUIRED;
-        this.valid = DEFAULT_VALID;
-    }
-
-    public Field(FieldTypes type, boolean required) {
-        this.type = type;
-        this.regexp = type.getRegExp();
-        this.required = required;
         this.valid = DEFAULT_VALID;
     }
 
@@ -66,5 +61,13 @@ public class Field {
 
     public void setValid(boolean valid) {
         this.valid = valid;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }

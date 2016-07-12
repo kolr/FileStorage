@@ -2,6 +2,7 @@ package com.cloud.services;
 
 
 import com.cloud.entities.User;
+import com.cloud.entities.beans.SignInBean;
 import com.cloud.storage.Storage;
 
 import javax.inject.Inject;
@@ -24,6 +25,11 @@ public class UserService {
 
     public User getUser(String login) {
         return storage.getUser(login);
+    }
+
+    //TODO implement
+    public User getUser(SignInBean credentials) {
+        return null;
     }
 
     public Collection<User> getALl() {
