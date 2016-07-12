@@ -25,24 +25,29 @@ public class VerifyTracker {
         List<VerifiableField> verifiableFields = new ArrayList<VerifiableField>();
         for (Field f : fields) {
             if (f.isAnnotationPresent(Verify.class)) {
-                Class[] paramTypes = new Class[]{};
-                String value = null;
-                Method m = null;
-                try {
-                    m = cl.getMethod("get" + capitalize(f.getName()), paramTypes);
-                    value = (String) m.invoke(obj, paramTypes);
-                } catch (NoSuchMethodException e) {
-                    LOG.error(e);
-                    return null;
-                } catch (InvocationTargetException e) {
-                    LOG.error(e);
-                    return null;
-                }
+                String value = getFieldValue(obj, cl, f);
                 VerifiableField field = new VerifiableField(f.getAnnotation(Verify.class).type(), value);
                 verifiableFields.add(field);
             }
         }
         return verifiableFields;
+    }
+
+    private static String getFieldValue(Verifiable obj, Class<?> cl, Field f) throws IllegalAccessException {
+        Class[] paramTypes = new Class[]{};
+        String value = null;
+        Method m = null;
+        try {
+            m = cl.getMethod("get" + capitalize(f.getName()), paramTypes);
+            value = (String) m.invoke(obj, paramTypes);
+        } catch (NoSuchMethodException e) {
+            LOG.error(e);
+            return null;
+        } catch (InvocationTargetException e) {
+            LOG.error(e);
+            return null;
+        }
+        return value;
     }
 
     private static String capitalize(String s) {
