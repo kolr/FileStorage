@@ -1,6 +1,7 @@
 package com.cloud.controllers;
 
 import com.cloud.entities.User;
+import com.cloud.entities.beans.SignInBean;
 import com.cloud.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -31,9 +32,10 @@ public class UserController {
 
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
     public String auth(HttpServletRequest request, Model model) {
-        String login = request.getParameter("login");
+        String email = request.getParameter("email");
         String pass = request.getParameter("pass");
-        User user = userService.getUser(login);
+        SignInBean credentials = new SignInBean(email, pass);
+        User user = userService.getUser(credentials);
         if (user != null) {
             if (user.getPass().equals(pass)) {
                 model.addAttribute("currentUser", user);
@@ -49,15 +51,6 @@ public class UserController {
         User newUser = generateUser(request);
         userService.addUser(newUser);
         model.addAttribute("lst", userService.getALl());
-        return "users";
-    }
-
-    @RequestMapping(value = "/{user}/all")
-    public String getAllUsers(Model model, @PathVariable String user) {
-        User admin = userService.getUser(user);
-        if (admin != null) {
-
-        }
         return "users";
     }
 
