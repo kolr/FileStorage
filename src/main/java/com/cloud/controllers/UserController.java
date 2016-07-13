@@ -33,7 +33,7 @@ public class UserController {
         LOGGER.info(credentials);
         User user = userService.getUser(credentials);
         if (user != null) {
-            if (user.getPass().equals(pass)) {
+            if (user.getPassword().equals(pass)) {
                 model.addAttribute("currentUser", user);
             } else {
                 model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
@@ -55,7 +55,7 @@ public class UserController {
         user.setEmail(request.getParameter("login"));
         user.setName(request.getParameter("name"));
         user.setLastName(request.getParameter("lastName"));
-        user.setPass(request.getParameter("pass"));
+        user.setPassword(request.getParameter("pass"));
         return user;
     }
 

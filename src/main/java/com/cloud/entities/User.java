@@ -1,15 +1,30 @@
 package com.cloud.entities;
 
+import org.hibernate.annotations.OptimisticLockType;
+import org.hibernate.annotations.Table;
+import org.hibernate.boot.model.relational.Namespace;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * ${APP}
  * Created by Rodion on 11.03.2016.
  */
+
+@Entity
+
+@org.hibernate.annotations.Entity(optimisticLock = OptimisticLockType.ALL)
 public class User {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String lastName;
     private String email;
-    private String pass;
+    private String password;
 
     public User() {
     }
@@ -18,8 +33,8 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String login) {
+        this.email = login;
     }
 
     public String getName() {
@@ -38,19 +53,19 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String pass) {
+        this.password = pass;
     }
 
     public int getId() {
         return id;
     }
-
-    public void setId(String role) {
-        this.id = id;
+    public void setId(int id){
+       this.id = id;
     }
+
 }
