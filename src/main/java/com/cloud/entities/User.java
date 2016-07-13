@@ -15,7 +15,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-
+@Table(name = "users")
 @org.hibernate.annotations.Entity(optimisticLock = OptimisticLockType.ALL)
 public class User {
     @Id

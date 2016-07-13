@@ -30,5 +30,7 @@
     <bean id="storage" class="com.cloud.storage.Storage"/>
 
     <bean id="validationManager" class="com.cloud.validation.ValidationManager"/>
+    <import resource="hibernate-context.xml" />
 
 </beans>
+
