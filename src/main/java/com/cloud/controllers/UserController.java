@@ -6,7 +6,6 @@ import com.cloud.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,10 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     private static final Logger LOGGER = Logger.getLogger(UserController.class);
 
-    static {
-        LOGGER.info("Change");
-    }
-
     @Inject
     UserService userService;
 
@@ -35,6 +30,7 @@ public class UserController {
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         SignInBean credentials = new SignInBean(email, pass);
+        LOGGER.info(credentials);
         User user = userService.getUser(credentials);
         if (user != null) {
             if (user.getPass().equals(pass)) {

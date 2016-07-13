@@ -5,8 +5,6 @@ import com.cloud.validation.entities.Verifiable;
 import org.apache.log4j.Logger;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 12.07.2016
@@ -29,10 +27,7 @@ public class ValidationManager {
     private boolean validateFields(List<VerifiableField> fields) {
         boolean result = true;
         for (VerifiableField field : fields) {
-            Pattern pattern = Pattern.compile(field.getRegexp());
-            Matcher matcher = pattern.matcher(field.getValue());
-            boolean matchingResult = matcher.matches();
-            if (!matchingResult) {
+            if (!field.getValue().matches(field.getRegexp())) {
                 result = false;
                 break;
             }
