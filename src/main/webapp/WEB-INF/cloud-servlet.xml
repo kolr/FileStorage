@@ -10,11 +10,11 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven />
-    <context:component-scan base-package="com.cloud.controllers" />
-    <context:annotation-config />
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.cloud.controllers"/>
+    <context:annotation-config/>
 
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -25,8 +25,10 @@
         </property>
     </bean>
 
-    <bean id="userService" class="com.cloud.services.UserService" />
+    <bean id="userService" class="com.cloud.services.UserService"/>
 
-    <bean id="storage" class="com.cloud.storage.Storage" />
+    <bean id="storage" class="com.cloud.storage.Storage"/>
+
+    <bean id="validationManager" class="com.cloud.validation.ValidationManager"/>
 
 </beans>

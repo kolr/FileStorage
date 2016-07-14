@@ -15,9 +15,11 @@
     </div>
     <div class="main-signin_middle">
         <div class="middle_form">
-            <input type="text" placeholder="Login">
-            <input type="password" placeholder="Password">
-            <input type="submit" value="Sign in">
+            <form action="user/auth" method="post">
+                <input type="text" placeholder="Email" id="email" name="email">
+                <input type="password" placeholder="Password" id="pass" name="pass">
+                <input type="submit" value="Sign in">
+            </form>
         </div>
     </div>
     <div class="main-signin_foot">

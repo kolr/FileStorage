@@ -14,7 +14,7 @@
 </head>
 <body>
 <c:forEach var="user" items="${lst}">
-    <p>${user.login} - ${user.name} <span>${user.lastName}</span></p>
+    <p>${user.email} - ${user.name} <span>${user.lastName}</span></p>
 </c:forEach>
 <h3>${errorMessage}</h3>
 </body>

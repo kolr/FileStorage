@@ -14,7 +14,7 @@
 <body>
 <h3>${currentUser.name}</h3>
 <h3>${currentUser.lastName}</h3>
-<h2>${currentUser.login}</h2>
+<h2>${currentUser.email}</h2>
 
 <div>
     <h3>${errorMessage}</h3>

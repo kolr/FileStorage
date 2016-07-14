@@ -16,7 +16,7 @@ public class Storage {
     }
 
     public void addUser(User user) {
-        this.users.put(user.getLogin(), user);
+        this.users.put(user.getEmail(), user);
     }
 
     public User getUser(String login) {

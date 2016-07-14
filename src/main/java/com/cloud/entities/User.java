@@ -5,21 +5,21 @@ package com.cloud.entities;
  * Created by Rodion on 11.03.2016.
  */
 public class User {
-    int id;
-    String name;
-    String lastName;
-    String login;
-    String pass;
+    private int id;
+    private String name;
+    private String lastName;
+    private String email;
+    private String pass;
 
     public User() {
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
