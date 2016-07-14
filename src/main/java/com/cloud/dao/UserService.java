@@ -4,19 +4,19 @@ import com.cloud.entities.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.mapping.List;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.jws.soap.SOAPBinding;
+import java.util.List;
 
 /**
  * Created by nikit on 13.07.2016.
  */
 
 @Service("userService")
-//@Transactional
+@Transactional
 public class UserService {
 
     private static final Logger LOGGER = Logger.getLogger(UserService.class);
@@ -29,7 +29,7 @@ public class UserService {
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("FROM User");
-        return (List<User>) query.list();
+        return query.list();
     }
 
     public User get(Integer id){
