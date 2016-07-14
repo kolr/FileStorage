@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * ${APP}
@@ -15,9 +16,8 @@ import javax.persistence.Id;
  */
 
 @Entity
-@Table(name = "users")
-@org.hibernate.annotations.Entity(optimisticLock = OptimisticLockType.ALL)
-public class User {
+//@Table(name = "User")
+public class User{
     @Id
     @GeneratedValue
     private int id;
