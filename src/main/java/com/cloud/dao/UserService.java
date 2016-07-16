@@ -32,9 +32,9 @@ public class UserService {
         return query.list();
     }
 
-    public User get(Integer id){
+    public User get(String email){
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
+        User user = (User) session.get(User.class, email);
         return user;
     }
 
