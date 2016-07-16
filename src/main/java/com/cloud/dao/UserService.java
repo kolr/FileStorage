@@ -30,6 +30,7 @@ public class UserService {
 
         Query query = session.createQuery("FROM User");
         return query.list();
+        //для обновления
     }
 
     public User get(String email){
