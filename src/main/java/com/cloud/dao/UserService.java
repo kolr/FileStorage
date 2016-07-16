@@ -43,10 +43,10 @@ public class UserService {
         session.save(user);
     }
 
-    public void delete(Integer id){
+    public void delete(String email){
         Session session = sessionFactory.getCurrentSession();
 
-        User user = (User) session.get(User.class, id);
+        User user = (User) session.get(User.class, email);
         session.delete(user);
     }
 }
