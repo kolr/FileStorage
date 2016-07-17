@@ -1,14 +1,14 @@
 package com.cloud.entities;
 
-import org.hibernate.annotations.OptimisticLockType;
-import org.hibernate.annotations.Table;
-import org.hibernate.boot.model.relational.Namespace;
+//import org.hibernate.annotations.OptimisticLockType;
+//import org.hibernate.annotations.Table;
+//import org.hibernate.boot.model.relational.Namespace;
 
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
+//import java.io.Serializable;
 
 /**
  * ${APP}

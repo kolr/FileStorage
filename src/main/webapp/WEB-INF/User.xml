@@ -1,11 +1,11 @@
 <hibernate-mapping>
-    <class name = "com.cloud.entities.User" table = "users">
-        <id column = "id" name = "id" type = "java.lang.Integer">
-            <generator class = "increment"/>
-        </id>
-        <property column = "name" name = "name" type = "java.lang.String"/>
-        <property column = "lastName" name = "lastName" type = "java.lang.String"/>
-        <property column = "email" name = "email" type = "java.lang.String"/>
-        <property column = "password" name = "password" type = "java.lang.String"/>
-    </class>
+<class name = "com.cloud.entities.User" table = "users">
+    <id column = "id" name = "id" type = "java.lang.Integer">
+        <generator class = "increment"/>
+    </id>
+    <property column = "name" name = "name" type = "java.lang.String"/>
+    <property column = "lastName" name = "lastName" type = "java.lang.String"/>
+    <property column = "email" name = "email" type = "java.lang.String"/>
+    <property column = "password" name = "password" type = "java.lang.String"/>
+</class>
 </hibernate-mapping>
