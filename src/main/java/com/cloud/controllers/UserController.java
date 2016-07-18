@@ -31,7 +31,7 @@ public class UserController {
         String pass = request.getParameter("pass");
         SignInBean credentials = new SignInBean(email, pass);
         LOGGER.info(credentials);
-        User user = userService.get(Integer.valueOf(credentials.getEmail()));
+        User user = userService.get(credentials.getEmail());
         if (user != null) {
             if (user.getPassword().equals(pass)) {
                 model.addAttribute("currentUser", user);

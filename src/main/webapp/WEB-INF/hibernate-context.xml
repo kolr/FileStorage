@@ -9,7 +9,7 @@
     <bean id="dataSourceTarget" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://127.0.0.1:3306/fs?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"/>
+                  value="jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"/>
         <property name="username" value="root"/>
         <property name="password" value="energystar"/>
     </bean>
@@ -37,7 +37,7 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/fs" />
+        <property name="url" value="jdbc:mysql://localhost:3306" />
         <property name="username" value="root" />
         <property name="password" value="energystar" />
     </bean>

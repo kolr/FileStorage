@@ -33,9 +33,9 @@ public class UserService {
         //для обновления
     }
 
-    public User get(int id){
+    public User get(String email){
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
+        User user = (User) session.get(User.class, email);
         return user;
     }
 
