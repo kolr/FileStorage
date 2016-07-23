@@ -27,16 +27,22 @@ public class UserService {
     public List<User> getAll(){
         LOGGER.debug("Retrieving all persons");
         Session session = sessionFactory.getCurrentSession();
-
         Query query = session.createQuery("FROM User");
         return query.list();
         //для обновления
     }
 
-    public User get(int id){
+    public User get(String email){
         Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.get(User.class, id);
-        return user;
+        Query query = session.createQuery("from User where email = :emailParam");
+        query.setParameter("emailParam",email);
+        if(query.list().size() != 0) {
+            User result = (User) query.list().get(0);
+            return result;
+        }
+        else {
+            return null;
+        }
     }
 
     public void add(User user){
@@ -44,10 +50,10 @@ public class UserService {
         session.save(user);
     }
 
-    public void delete(String email){
+    public void delete(Integer id){
         Session session = sessionFactory.getCurrentSession();
 
-        User user = (User) session.get(User.class, email);
+        User user = (User) session.get(User.class, id);
         session.delete(user);
     }
 }

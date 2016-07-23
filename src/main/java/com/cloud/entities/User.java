@@ -8,6 +8,7 @@ package com.cloud.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 //import java.io.Serializable;
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-//@Table(name = "User")
+//@Table(name = "user")
 public class User{
     @Id
     @GeneratedValue

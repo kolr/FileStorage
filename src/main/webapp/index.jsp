@@ -31,16 +31,18 @@
 <div id="main-signup">
     <div id="dialog" class="window">
         <div class="header">Sign up</div>
+        <form action = "/user/registration" method="post">
         <div class="middle_form">
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Last name">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
+            <input type="text" placeholder="Name" name="name">
+            <input type="text" placeholder="Last name" name="lastName">
+            <input type="text" placeholder="Email" name="email">
+            <input type="password" placeholder="Password" name="password">
         </div>
         <div class="footer">
             <input type="submit" value="Send">
             <a href="#" id="close"/><input type="button" value="Cancel"></a>
         </div>
+        </form>
     </div>
     <div id="mask"></div>
 </div>
