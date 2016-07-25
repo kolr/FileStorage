@@ -4,6 +4,7 @@ import com.cloud.entities.User;
 import com.cloud.entities.beans.RegistrationBean;
 import com.cloud.entities.beans.SignInBean;
 import com.cloud.dao.UserService;
+import com.cloud.exceptions.user.LoginAlreadyExistException;
 import com.cloud.validation.ValidationManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,11 @@ public class UserController {
     public String registration(HttpServletRequest request, Model model) {
         RegistrationBean registrationBean = generateRegistrationBean(request);
         if (validationManager.validate(registrationBean, RegistrationBean.class)) {
-            userService.add(convertToUser(registrationBean));
+            try {
+                userService.add(convertToUser(registrationBean));
+            } catch (LoginAlreadyExistException e) {
+                LOGGER.error(e);
+            }
         } else {
             LOGGER.error("An Error while validation occurred.");
         }

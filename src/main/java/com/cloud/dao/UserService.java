@@ -1,6 +1,7 @@
 package com.cloud.dao;
 
 import com.cloud.entities.User;
+import com.cloud.exceptions.user.LoginAlreadyExistException;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,6 +20,7 @@ import java.util.List;
 @Service("userService")
 @Transactional
 public class UserService {
+    private static final String REGISTRATION_ERROR = "User with email '%s' already exists in system.";
 
     private static final Logger LOGGER = Logger.getLogger(UserService.class);
 
@@ -45,9 +47,18 @@ public class UserService {
         }
     }
 
-    public void add(User user) {
+    public void add(User user) throws LoginAlreadyExistException {
         Session session = sessionFactory.getCurrentSession();
-        session.save(user);
+        if (isEmailUnique(user.getEmail())) {
+            session.save(user);
+        } else {
+            throw new LoginAlreadyExistException(String.format(REGISTRATION_ERROR, user.getEmail()));
+        }
+    }
+
+    private boolean isEmailUnique(String email) {
+        User user = get(email);
+        return user == null;
     }
 
     public void delete(Integer id) {
