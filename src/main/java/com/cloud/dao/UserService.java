@@ -12,7 +12,7 @@ import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
- * Created by nikit on 13.07.2016.
+ * Created by Nikita on 13.07.2016.
  */
 
 @Service("userService")
