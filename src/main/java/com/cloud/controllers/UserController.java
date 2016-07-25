@@ -54,11 +54,12 @@ public class UserController {
         RegistrationBean registrationBean = generateRegistrationBean(request);
         if (validationManager.validate(registrationBean, RegistrationBean.class)) {
             registeredUser = convertToUser(registrationBean);
-            request.getSession().setAttribute("user", registeredUser);
             try {
                 userService.add(registeredUser);
+                request.getSession().setAttribute("user", registeredUser);
             } catch (LoginAlreadyExistException e) {
                 LOGGER.error(e);
+                return "redirect:error";
             }
         } else {
             LOGGER.error("An Error while validation occurred.");
@@ -74,6 +75,12 @@ public class UserController {
         } else {
             model.addAttribute("errorMessage", "Login or Password was entered not correctly!");
         }
+        return "acc";
+    }
+
+    @RequestMapping(value = "error")
+    public String getError(HttpServletRequest request, Model model) {
+        model.addAttribute("errorMessage", "User with this email already exists.");
         return "acc";
     }
 
