@@ -20,6 +20,9 @@ import java.util.List;
 public class VerifyTracker {
     private static final Logger LOG = Logger.getLogger(VerifyTracker.class);
 
+    private VerifyTracker() {
+    }
+
     public static List<VerifiableField> trackVerifyFields(Verifiable obj, Class<?> cl) throws IllegalAccessException {
         Field[] fields = cl.getDeclaredFields();
         List<VerifiableField> verifiableFields = new ArrayList<VerifiableField>();

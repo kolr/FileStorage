@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 import javax.jws.soap.SOAPBinding;
 import java.util.List;
@@ -24,7 +25,7 @@ public class UserService {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         LOGGER.debug("Retrieving all persons");
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("FROM User");
@@ -32,25 +33,24 @@ public class UserService {
         //для обновления
     }
 
-    public User get(String email){
+    public User get(String email) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User where email = :emailParam");
-        query.setParameter("emailParam",email);
-        if(query.list().size() != 0) {
+        query.setParameter("emailParam", email);
+        if (query.list().size() != 0) {
             User result = (User) query.list().get(0);
             return result;
-        }
-        else {
+        } else {
             return null;
         }
     }
 
-    public void add(User user){
+    public void add(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
         Session session = sessionFactory.getCurrentSession();
 
         User user = (User) session.get(User.class, id);

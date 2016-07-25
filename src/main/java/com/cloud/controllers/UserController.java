@@ -35,13 +35,13 @@ public class UserController {
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         SignInBean credentials = new SignInBean(email, pass);
-        User user = userService.get(credentials.getEmail());
-        if (user != null) {
-            if (user.getPassword().equals(pass)) {
+        if (validationManager.validate(credentials, SignInBean.class)) {
+            User user = userService.get(credentials.getEmail());
+            if (user != null) {
                 model.addAttribute("currentUser", user);
-            } else {
-                model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
             }
+        } else {
+            model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
         }
         return "acc";
     }
