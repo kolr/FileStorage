@@ -39,28 +39,42 @@ public class UserController {
         if (validationManager.validate(credentials, SignInBean.class)) {
             User user = userService.get(credentials.getEmail());
             if (user != null) {
+                request.getSession().setAttribute("user", user);
                 model.addAttribute("currentUser", user);
             }
         } else {
             model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
         }
-        return "acc";
+        return "redirect:acc";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(HttpServletRequest request, Model model) {
+    public String registration(HttpServletRequest request) {
+        User registeredUser = null;
         RegistrationBean registrationBean = generateRegistrationBean(request);
         if (validationManager.validate(registrationBean, RegistrationBean.class)) {
+            registeredUser = convertToUser(registrationBean);
+            request.getSession().setAttribute("user", registeredUser);
             try {
-                userService.add(convertToUser(registrationBean));
+                userService.add(registeredUser);
             } catch (LoginAlreadyExistException e) {
                 LOGGER.error(e);
             }
         } else {
             LOGGER.error("An Error while validation occurred.");
         }
-        model.addAttribute("lst", userService.getAll());
-        return "users";
+        return "redirect:acc";
+    }
+
+    @RequestMapping(value = "acc")
+    public String getAccountPage(HttpServletRequest request, Model model) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            model.addAttribute("currentUser", user);
+        } else {
+            model.addAttribute("errorMessage", "Login or Password was entered not correctly!");
+        }
+        return "acc";
     }
 
     private RegistrationBean generateRegistrationBean(HttpServletRequest request) {
