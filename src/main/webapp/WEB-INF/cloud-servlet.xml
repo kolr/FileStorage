@@ -27,7 +27,6 @@
 
     <bean id="userService" class="com.cloud.dao.UserService"/>
 
-    <bean id="storage" class="com.cloud.storage.Storage"/>
 
     <bean id="validationManager" class="com.cloud.validation.ValidationManager"/>
     <import resource="hibernate-context.xml" />

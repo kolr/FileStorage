@@ -13,14 +13,16 @@ public class RegistrationBean implements Verifiable {
     @Verify(type = FieldTypes.EMAIL)
     private String email;
 
-    @Verify
+    @Verify(type = FieldTypes.NAME)
     private String name;
 
-    @Verify
+    @Verify(type = FieldTypes.NAME)
     private String lastname;
 
     @Verify(type = FieldTypes.PASSWORD)
     private String password;
+
+    private String folder;
 
     public RegistrationBean(String email, String name, String lastname, String password) {
         this.email = email;
@@ -60,4 +62,5 @@ public class RegistrationBean implements Verifiable {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

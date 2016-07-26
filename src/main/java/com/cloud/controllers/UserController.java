@@ -5,6 +5,7 @@ import com.cloud.entities.beans.RegistrationBean;
 import com.cloud.entities.beans.SignInBean;
 import com.cloud.dao.UserService;
 import com.cloud.exceptions.user.LoginAlreadyExistException;
+import com.cloud.serveces.RegistrationService;
 import com.cloud.validation.ValidationManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -57,6 +58,7 @@ public class UserController {
             try {
                 userService.add(registeredUser);
                 request.getSession().setAttribute("user", registeredUser);
+                RegistrationService.createDirectory(registeredUser.getFolder());
             } catch (LoginAlreadyExistException e) {
                 LOGGER.error(e);
                 return "redirect:error";
@@ -85,6 +87,7 @@ public class UserController {
     }
 
     private RegistrationBean generateRegistrationBean(HttpServletRequest request) {
+        RegistrationService folder = new RegistrationService();
         RegistrationBean user = new RegistrationBean(request.getParameter("email"), request.getParameter("name"),
                 request.getParameter("lastName"), request.getParameter("password"));
         return user;
@@ -96,6 +99,7 @@ public class UserController {
         user.setName(registrationBean.getName());
         user.setLastName(registrationBean.getLastname());
         user.setPassword(registrationBean.getPassword());
+        user.setFolder(RegistrationService.generateFolderName());
         return user;
     }
 

@@ -26,6 +26,7 @@ public class User{
     private String lastName;
     private String email;
     private String password;
+    private String folder;
 
     public User() {
     }
@@ -67,6 +68,14 @@ public class User{
     }
     public void setId(int id){
        this.id = id;
+    }
+
+    public String getFolder() {
+
+        return folder;
+    }
+    public void setFolder(String folder){
+        this.folder = folder;
     }
 
 }
