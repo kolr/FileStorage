@@ -8,11 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/home_page_style.css">
     <%@ page isELIgnored="false" %>
     <title>Account</title>
 </head>
 <body>
-<h3>${currentUser.name}</h3>
+<div id="header">
+    <h2>${currentUser.email}</h2>
+</div>
+<div id="footer">
+    <h3>${currentUser.name}</h3>
+</div>
+<div>
+
+</div>
+
+
 <h3>${currentUser.lastName}</h3>
 <h2>${currentUser.email}</h2>
 

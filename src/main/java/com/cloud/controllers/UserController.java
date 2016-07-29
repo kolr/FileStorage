@@ -46,7 +46,7 @@ public class UserController {
         } else {
             model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
         }
-        return "redirect:acc";
+        return "redirect:home_page";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -66,10 +66,10 @@ public class UserController {
         } else {
             LOGGER.error("An Error while validation occurred.");
         }
-        return "redirect:acc";
+        return "redirect:home_page";
     }
 
-    @RequestMapping(value = "acc")
+    @RequestMapping(value = "home_page")
     public String getAccountPage(HttpServletRequest request, Model model) {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
@@ -77,13 +77,13 @@ public class UserController {
         } else {
             model.addAttribute("errorMessage", "Login or Password was entered not correctly!");
         }
-        return "acc";
+        return "home_page";
     }
 
     @RequestMapping(value = "error")
     public String getError(HttpServletRequest request, Model model) {
         model.addAttribute("errorMessage", "User with this email already exists.");
-        return "acc";
+        return "home_page";
     }
 
     private RegistrationBean generateRegistrationBean(HttpServletRequest request) {
