@@ -5,7 +5,7 @@ import com.cloud.entities.beans.RegistrationBean;
 import com.cloud.entities.beans.SignInBean;
 import com.cloud.dao.UserService;
 import com.cloud.exceptions.user.LoginAlreadyExistException;
-import com.cloud.serveces.RegistrationService;
+import com.cloud.services.RegistrationService;
 import com.cloud.validation.ValidationManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;

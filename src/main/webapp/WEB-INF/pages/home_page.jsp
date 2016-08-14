@@ -34,7 +34,7 @@
 		</form>
 	</div>
 	<div>
-		<form class="button">
+		<form class="button" enctype="multipart/form-data" action="/upload" method="post">
 			<input class="button" type="button" value="Upload">
 		</form>
 	</div>
