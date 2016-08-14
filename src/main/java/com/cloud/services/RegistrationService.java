@@ -1,4 +1,4 @@
-package com.cloud.serveces;
+package com.cloud.services;
 
 /**
  * Created by nikit on 26.07.2016.
