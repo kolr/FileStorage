@@ -62,6 +62,11 @@ crashlytics-build.properties
 ### Example user template template
 ### Example user template
 
+cloud-servlet.xml
+hibernate.cfg.xml
+hibernate-context.xml
+spring.properties
+
 
 out
 gen
