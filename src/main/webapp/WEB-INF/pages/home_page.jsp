@@ -34,8 +34,10 @@
 		</form>
 	</div>
 	<div>
-		<form class="button" enctype="multipart/form-data" action="/upload" method="post">
-			<input class="button" type="button" value="Upload">
+		<form class="button" enctype="multipart/form-data" action="/upload" method="post" name="submit" >
+			<input class="button" type="file" value="Upload" name="file">
+			<input type="text" name="name">
+			<input type="submit" name="submit"/>
 		</form>
 	</div>
 	<div>

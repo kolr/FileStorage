@@ -10,7 +10,7 @@ html,body{
 	font-family: 'Lobster';
 	color: #516fc8;
 	text-align:center;
-	margin: 50%,0,0,0;
+	margin: 50%;
 }
 .header{
 	height: 10%;
@@ -45,6 +45,12 @@ html,body{
 .left-side .button input[type="button"]:hover{
 	color: #516fc8;
 }
+.left-side .button input[type="file"]:active{
+	color: #516fc8;
+}
+.left-side .button input[type="file"]:hover{
+	color: #516fc8;
+}
 
 .header .button{
 	background-color: transparent;
@@ -64,29 +70,6 @@ html,body{
 	color: #516fc8;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    
-}
 
-/*li {
-    float: right;
-}
 
-li input {
-	background-color: transparent;
-	outline: none;
-	border: none;
-	color: #8aa2c4;
-	font-size: x-large;
-	border-radius: 10px;
-	margin: 0;
-	display: inline;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}*/
 

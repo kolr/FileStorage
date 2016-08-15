@@ -18,10 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadController {
     @RequestMapping(value="/upload", method=RequestMethod.GET)
     public @ResponseBody String provideUploadInfo() {
-        return "Вы можете загружать файл с использованием того же URL.";
+        return "You can load file from URL.";
     }
 
-    @RequestMapping(value="/upload", method=RequestMethod.POST)
+    @RequestMapping(value="/upload",params = {"submit"}, method=RequestMethod.POST)
     public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
                                                  @RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
@@ -31,12 +31,12 @@ public class FileUploadController {
                         new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
                 stream.write(bytes);
                 stream.close();
-                return "Вы удачно загрузили " + name + " в " + name + "-uploaded !";
+                return "Good " + name;
             } catch (Exception e) {
-                return "Вам не удалось загрузить " + name + " => " + e.getMessage();
+                return e.getMessage();
             }
         } else {
-            return "Вам не удалось загрузить " + name + " потому что файл пустой.";
+            return "File is empty";
         }
     }
 

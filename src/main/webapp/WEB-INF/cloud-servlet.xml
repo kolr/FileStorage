@@ -31,7 +31,8 @@
     <bean id="validationManager" class="com.cloud.validation.ValidationManager"/>
     <import resource="hibernate-context.xml" />
 
-
-
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
 </beans>
 
