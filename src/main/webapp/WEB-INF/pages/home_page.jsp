@@ -3,17 +3,16 @@
 <head>
 	<%@ page isELIgnored="false" %>
     <link rel="stylesheet" type="text/css" href="../../resources/css/home_page_style.css">
+	<script type="text/javascript" src="../../resources/js/jquery-3.1.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
     <script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../resources/js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="../../resources/js/respond.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Lobster|Pacifico|Kaushan+Script' rel='stylesheet' type='text/css'>
     <title>Account</title>
 </head>
 <body>
 <div class="container">
-	
-<div class="row">
+	<div class="row">
 	<div class="col-xs-2 col-md-2 icon">FileStorage</div>
 	<div class="col-xs-10 col-md-10 header">
 		
@@ -23,7 +22,6 @@
 			<form class="button">
 				<input class = "button" type="button" value="Sort">
 			</form>
-		
 	</div>
 </div>
 <div class="row">
@@ -34,10 +32,10 @@
 		</form>
 	</div>
 	<div>
-		<form class="button" enctype="multipart/form-data" action="/upload" method="post" name="submit" >
+		<form class="button" enctype="multipart/form-data" action="/upload" method="post">
 			<input class="button" type="file" value="Upload" name="file">
-			<input type="text" name="name">
-			<input type="submit" name="submit"/>
+			<input type="text">
+			<input type="submit"1/>
 		</form>
 	</div>
 	<div>
