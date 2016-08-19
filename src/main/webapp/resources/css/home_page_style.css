@@ -7,8 +7,8 @@ html,body{
 	font-size: 30px;
 	font-family: 'Lobster';
 	color: #516fc8;
-	text-align:center;
-	margin: 50% 0 0 0;
+	text-align:left;
+	margin: 50%,0,0,0;
 }
 .header{
 	height: 10%;
@@ -25,13 +25,13 @@ html,body{
 	height: 5%;
 }
 .left-side .button{
+	padding: 0;
 	background-color: transparent;
 	outline: none;
 	border: none;
 	color: #8aa2c4;
 	font-size: x-large;
 	text-align: left;
-	border-radius: 10px;
 	margin: 0;
 }
 .left-side .button input[type="button"]:active{
@@ -48,12 +48,12 @@ html,body{
 }
 
 .header .button{
+	padding: 0;
 	background-color: transparent;
 	outline: none;
 	border: none;
 	color: #8aa2c4;
 	font-size: x-large;
-	border-radius: 10px;
 	margin: 0;
 	display: inline-block;
 	float: right;

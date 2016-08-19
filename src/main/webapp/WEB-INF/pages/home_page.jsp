@@ -3,6 +3,7 @@
 <head>
 	<%@ page isELIgnored="false" %>
     <link rel="stylesheet" type="text/css" href="../../resources/css/home_page_style.css">
+	<script type="text/javascript" src="../../resources/js/dropzone.js"></script>
 	<script type="text/javascript" src="../../resources/js/jquery-3.1.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css">
     <script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
@@ -33,9 +34,12 @@
 	</div>
 	<div>
 		<form class="button" enctype="multipart/form-data" action="/upload" method="post">
-			<input class="button" type="file" value="Upload" name="file">
+		<div class="fallback">
+			<input type="file" name="file" value="Upload" multiple/>
+		</div>
+			<!--<input class="button" type="file" value="Upload" name="file">
 			<input type="text">
-			<input type="submit"1/>
+			<input type="submit"1/>-->
 		</form>
 	</div>
 	<div>
