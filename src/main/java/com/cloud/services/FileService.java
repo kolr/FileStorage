@@ -69,4 +69,16 @@ public class FileService {
                 fileName(fileName).build());
         file.delete();
     }
+
+    public boolean editFile(User user, String fileName, String newFileName) throws IOException, UserNotLoggedInException {
+        if (user == null) {
+            throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
+        }
+
+        File file = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+                fileName(fileName).build());
+        File newFile = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+                fileName(newFileName).build());
+        return file.renameTo(newFile);
+    }
 }

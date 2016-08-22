@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +18,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -95,5 +93,23 @@ public class FileUploadController {
         }
         return "redirect:/files";
     }
+
+    @RequestMapping(value = "/files/file/edit", method = RequestMethod.POST)
+    public String editFileName(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        String fileName = request.getParameter("fileName");
+        String newFileName = request.getParameter("newFileName");
+        try {
+            fileService.editFile(user, fileName, newFileName);
+            LOGGER.info(String.format("File '%s' of %s %s has been removed", fileName,
+                    user.getName(), user.getLastName()));
+        } catch (IOException e) {
+            LOGGER.error(e);
+        } catch (UserNotLoggedInException e) {
+            LOGGER.error(e);
+        }
+        return "redirect:/files";
+    }
+
 
 }
