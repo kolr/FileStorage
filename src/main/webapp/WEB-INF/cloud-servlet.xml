@@ -27,12 +27,12 @@
 
     <bean id="userService" class="com.cloud.dao.UserService"/>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
 
     <bean id="validationManager" class="com.cloud.validation.ValidationManager"/>
-    <import resource="hibernate-context.xml" />
-
-    <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    </bean>
+    <bean id="FileService" class="com.cloud.services.FileService"/>
+    <import resource="hibernate-context.xml"/>
 </beans>
 
