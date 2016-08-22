@@ -16,12 +16,21 @@ import java.util.List;
 /**
  * 22.08.2016
  * Created by Rodion.
+ *
+ * Basic module for processing user's files.
  */
 public class FileService {
     private static final String USER_ERROR_WHILE_UPLOAD = "To add the file to system user must be logged in.";
     private static final String USER_ERROR_WHILE_CREATE = "To create a file in system user must be logged in.";
 
-
+    /**
+     * Uploads single file to server from client.
+     *
+     * @param user - user, who uploaded file.
+     * @param file - uploaded file.
+     * @throws IOException - throws if errors with file has been occurred.
+     * @throws UserNotLoggedInException - throws if user has not been logged in.
+     */
     public void uploadFile(User user, MultipartFile file) throws IOException, UserNotLoggedInException {
         if (user == null) {
             throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
@@ -37,6 +46,14 @@ public class FileService {
         fos.close();
     }
 
+    /**
+     * Creates single file to server from client. (Just *.txt format)
+     *
+     * @param user - user, who creates file.
+     * @param fileName - new file name.
+     * @throws IOException - throws if errors with file has been occurred.
+     * @throws UserNotLoggedInException - throws if user has not been logged in.
+     */
     public void createFile(User user, String fileName) throws IOException, UserNotLoggedInException {
         if (user == null) {
             throw new UserNotLoggedInException(USER_ERROR_WHILE_CREATE);
@@ -48,6 +65,13 @@ public class FileService {
         uploaded.createNewFile();
     }
 
+    /**
+     * Uploads single file to server from client.
+     *
+     * @param currentPath - directory, where to look for files.
+     * @throws IOException - throws if errors with file has been occurred.
+     * @throws UserNotLoggedInException - throws if user has not been logged in.
+     */
     public List<ClientFileBean> getAllFiles(String currentPath) {
         List<ClientFileBean> result = new ArrayList<ClientFileBean>();
         Path.Builder builder = new Path.Builder();
@@ -59,6 +83,14 @@ public class FileService {
         return result;
     }
 
+    /**
+     * Removes single file from server.
+     *
+     * @param user - user, who removes file.
+     * @param fileName - removed file name.
+     * @throws IOException - throws if errors with file has been occurred.
+     * @throws UserNotLoggedInException - throws if user has not been logged in.
+     */
     public void removeFile(User user, String fileName) throws IOException, UserNotLoggedInException {
         if (user == null) {
             throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
