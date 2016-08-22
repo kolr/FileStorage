@@ -15,12 +15,13 @@ import java.io.IOException;
  * Created by Rodion.
  */
 public class FileService {
-    private static final String USER_ERROR = "To add the file to system user must be logged in.";
+    private static final String USER_ERROR_WHILE_UPLOAD = "To add the file to system user must be logged in.";
+    private static final String USER_ERROR_WHILE_CREATE = "To create a file in system user must be logged in.";
 
 
     public void uploadFile(User user, MultipartFile file) throws IOException, UserNotLoggedInException {
         if (user == null) {
-            throw new UserNotLoggedInException(USER_ERROR);
+            throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
         }
 
         Path.Builder pathBuilder = new Path.Builder();
@@ -31,5 +32,16 @@ public class FileService {
         fos = new FileOutputStream(uploaded);
         fos.write(file.getBytes());
         fos.close();
+    }
+
+    public void createFile(User user, String fileName) throws IOException, UserNotLoggedInException {
+        if (user == null) {
+            throw new UserNotLoggedInException(USER_ERROR_WHILE_CREATE);
+        }
+
+        Path.Builder pathBuilder = new Path.Builder();
+        File uploaded = new File(pathBuilder.rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+                fileName(fileName).build() + ".txt");
+        uploaded.createNewFile();
     }
 }

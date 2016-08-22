@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -48,6 +50,23 @@ public class FileUploadController {
             return "bad file";
         }
         return "good file";
+    }
+
+    @RequestMapping(value = "/file/new", method = RequestMethod.POST)
+    public @ResponseBody String createFile(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        String fileName = request.getParameter("fileName");
+
+        try {
+            fileService.createFile(user, fileName);
+        } catch (IOException e) {
+            LOGGER.error(e);
+            return "Could not create a file.";
+        } catch (UserNotLoggedInException e) {
+            LOGGER.error(e);
+            return "Could not create a file.";
+        }
+        return String.format("File '%s' created", fileName);
     }
 
 }

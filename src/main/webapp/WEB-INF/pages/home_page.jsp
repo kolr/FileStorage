@@ -29,8 +29,10 @@
     <div class="row">
         <div class="col-xs-2 left-side">
             <div>
-                <form class="button">
-                    <input class="button" type="button" value="Create">
+                <form class="button" action="/file/new" method="post">
+                    <input type="text" placeholder="Enter name of new file here..." name="fileName" />
+                    <input class="button" type="submit" value="Create">
+
                 </form>
             </div>
             <div>
@@ -48,6 +50,13 @@
         <div class="col-xs-10 content">
         </div>
     </div>
+
+    <!-- List of files -->
+    <div class="files">
+
+    </div>
+
+
     <div class="row">
         <div class="col-xs-12 footer"> footer</div>
     </div>
