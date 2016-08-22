@@ -10,8 +10,8 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
                   value="jdbc:mysql://127.0.0.1:3306/fs?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"/>
-        <property name="username" value="admin"/>
-        <property name="password" value="pipetka12"/>
+        <property name="username" value="root"/>
+        <property name="password" value="energystar"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -38,8 +38,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/fs" />
-        <property name="username" value="admin" />
-        <property name="password" value="pipetka12" />
+        <property name="username" value="root" />
+        <property name="password" value="energystar" />
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

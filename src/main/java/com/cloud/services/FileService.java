@@ -36,12 +36,10 @@ public class FileService {
             throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
         }
 
-        Path.Builder pathBuilder = new Path.Builder();
-        File uploaded = new File(pathBuilder.rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+        File uploaded = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
                 fileName(file.getOriginalFilename()).build());
-        FileOutputStream fos = null;
         uploaded.createNewFile();
-        fos = new FileOutputStream(uploaded);
+        FileOutputStream fos = new FileOutputStream(uploaded);
         fos.write(file.getBytes());
         fos.close();
     }
@@ -59,23 +57,19 @@ public class FileService {
             throw new UserNotLoggedInException(USER_ERROR_WHILE_CREATE);
         }
 
-        Path.Builder pathBuilder = new Path.Builder();
-        File uploaded = new File(pathBuilder.rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+        File file = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
                 fileName(fileName).build() + ".txt");
-        uploaded.createNewFile();
+        file.createNewFile();
     }
 
     /**
      * Uploads single file to server from client.
      *
      * @param currentPath - directory, where to look for files.
-     * @throws IOException - throws if errors with file has been occurred.
-     * @throws UserNotLoggedInException - throws if user has not been logged in.
      */
     public List<ClientFileBean> getAllFiles(String currentPath) {
         List<ClientFileBean> result = new ArrayList<ClientFileBean>();
-        Path.Builder builder = new Path.Builder();
-        File directory = new File(builder.rootPath(Constants.ROOT_PATH).userPath(currentPath).build());
+        File directory = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(currentPath).build());
         for (File file : directory.listFiles()) {
             ClientFileBean temp = new ClientFileBean.Builder().name(file.getName()).size(123).build();
             result.add(temp);
@@ -96,8 +90,7 @@ public class FileService {
             throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
         }
 
-        Path.Builder pathBuilder = new Path.Builder();
-        File file = new File(pathBuilder.rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+        File file = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
                 fileName(fileName).build());
         file.delete();
     }
