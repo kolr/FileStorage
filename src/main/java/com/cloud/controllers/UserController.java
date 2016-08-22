@@ -46,7 +46,7 @@ public class UserController {
         } else {
             model.addAttribute("errorMessage", "Login or Password was entered not correctly.");
         }
-        return "redirect:home_page";
+        return "redirect:/files";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)

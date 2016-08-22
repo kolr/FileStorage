@@ -35,9 +35,9 @@ public class Path {
     }
 
     public static class Builder {
-        private String rootPath;
-        private String userPath;
-        private String fileName;
+        private String rootPath = "";
+        private String userPath = "";
+        private String fileName = "";
 
         public Builder() {
         }

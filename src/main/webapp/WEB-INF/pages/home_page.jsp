@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <%@ page isELIgnored="false" %>
@@ -47,13 +48,21 @@
                 </form>
             </div>
         </div>
+
+        <!-- List of files -->
+        <div class="files col-xs-7 pull-right">
+            <c:forEach items="${files}" var="file">
+                <div>
+                    <span>${file.name}</span>
+                    <span>${file.size}</span>
+                    <span>Edit</span>
+                    <span>Remove</span>
+                </div>
+            </c:forEach>
+        </div>
+
         <div class="col-xs-10 content">
         </div>
-    </div>
-
-    <!-- List of files -->
-    <div class="files">
-
     </div>
 
 
