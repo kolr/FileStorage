@@ -20,7 +20,6 @@ import java.util.List;
 public class FileService {
     private static final String USER_ERROR_WHILE_UPLOAD = "To add the file to system user must be logged in.";
     private static final String USER_ERROR_WHILE_CREATE = "To create a file in system user must be logged in.";
-    private static final String USER_ERROR_WHILE_GET = "To get files user must be logged in.";
 
 
     public void uploadFile(User user, MultipartFile file) throws IOException, UserNotLoggedInException {
@@ -58,5 +57,28 @@ public class FileService {
             result.add(temp);
         }
         return result;
+    }
+
+    public void removeFile(User user, String fileName) throws IOException, UserNotLoggedInException {
+        if (user == null) {
+            throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
+        }
+
+        Path.Builder pathBuilder = new Path.Builder();
+        File file = new File(pathBuilder.rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+                fileName(fileName).build());
+        file.delete();
+    }
+
+    public boolean editFile(User user, String fileName, String newFileName) throws IOException, UserNotLoggedInException {
+        if (user == null) {
+            throw new UserNotLoggedInException(USER_ERROR_WHILE_UPLOAD);
+        }
+
+        File file = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+                fileName(fileName).build());
+        File newFile = new File(new Path.Builder().rootPath(Constants.ROOT_PATH).userPath(user.getFolder()).
+                fileName(newFileName).build());
+        return file.renameTo(newFile);
     }
 }

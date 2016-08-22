@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,13 +18,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 /**
  * Created by nikit on 14.08.2016.
  */
-
 @Controller
 public class FileUploadController {
     private static final Logger LOGGER = Logger.getLogger(FileUploadController.class);
@@ -71,16 +68,48 @@ public class FileUploadController {
     }
 
     @RequestMapping(value = "/files", method = RequestMethod.GET)
-    public String getFiles(HttpServletRequest request, HttpServletResponse response) {
+    public String getFiles(HttpServletRequest request) {
         List<ClientFileBean> files = null;
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
             files = fileService.getAllFiles(user.getFolder());
-            LOGGER.info(String.format("Number of files is: %d", files.size()));
             request.getSession().setAttribute("files", files);
-
         }
         return "redirect:/user/home_page";
     }
+
+    @RequestMapping(value = "/files/file/remove", method = RequestMethod.POST)
+    public String removeFile(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        String fileName = request.getParameter("fileName");
+        try {
+            fileService.removeFile(user, fileName);
+            LOGGER.info(String.format("File '%s' of %s %s has been removed", fileName,
+                    user.getName(), user.getLastName()));
+        } catch (IOException e) {
+            LOGGER.error(e);
+        } catch (UserNotLoggedInException e) {
+            LOGGER.error(e);
+        }
+        return "redirect:/files";
+    }
+
+    @RequestMapping(value = "/files/file/edit", method = RequestMethod.POST)
+    public String editFileName(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        String fileName = request.getParameter("fileName");
+        String newFileName = request.getParameter("newFileName");
+        try {
+            fileService.editFile(user, fileName, newFileName);
+            LOGGER.info(String.format("File '%s' of %s %s has been removed", fileName,
+                    user.getName(), user.getLastName()));
+        } catch (IOException e) {
+            LOGGER.error(e);
+        } catch (UserNotLoggedInException e) {
+            LOGGER.error(e);
+        }
+        return "redirect:/files";
+    }
+
 
 }
