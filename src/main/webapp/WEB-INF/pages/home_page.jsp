@@ -52,11 +52,17 @@
         <!-- List of files -->
         <div class="files col-xs-7 pull-right">
             <c:forEach items="${files}" var="file">
-                <div>
+                <div class="file-item">
                     <span>${file.name}</span>
                     <span>${file.size}</span>
-                    <span>Edit</span>
-                    <span>Remove</span>
+                    <form action = "/files/file/edit" method="post">
+                        <input type="hidden" name="fileName" value="${file.name}">
+                        <input type="submit" value="edit" />
+                    </form>
+                    <form action = "/files/file/remove" method="post">
+                        <input type="hidden" name="fileName" value="${file.name}">
+                        <input type="submit" value="remove" />
+                    </form>
                 </div>
             </c:forEach>
         </div>
